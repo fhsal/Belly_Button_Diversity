@@ -2,6 +2,10 @@
 
 CWRU Data Analytics Module Twelve Challenge
 
+## published on gitHub pages !
+
+https://fhsal.github.io/Belly_Button_Diversity/
+
 
 ## Overview of Project
 
