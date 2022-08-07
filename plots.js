@@ -39,97 +39,84 @@ function optionChanged(newSample) {
 
 function buildCharts(patientID) {
 
-  // READ & INTERPRET THE DATA
-  //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-  // Read in the JSON data
+  // Read the data
   d3.json("samples.json").then((data => {
 
-      // Define samples
+  // Define samples
       var samples = data.samples
       var metadata = data.metadata
-      var filteredMetadata = metadata.filter(bacteriaInfo => bacteriaInfo.id == patientID)[0]
+      var filteredMetadata = metadata.filter(patientInfo => patientInfo.id == patientID)[0]
 
-      // Filter by patient ID
-      var filteredSample = samples.filter(bacteriaInfo => bacteriaInfo.id == patientID)[0]
+  // Filter by patient IDdata
+      var filteredSample = samples.filter(patientInfo => patientInfo.id == patientID)[0]
 
-      // Create variables for chart
-      // Grab sample_values for the bar chart
+  // Create variable for values for bar chart
+
       var sample_values = filteredSample.sample_values
 
-      // Use otu_ids as the labels for bar chart
+  // Use otu_ids as labels
       var otu_ids = filteredSample.otu_ids
 
-      // use otu_labels as the hovertext for bar chart
+  // use otu_labels as hovertext
       var otu_labels = filteredSample.otu_labels
 
-      // BAR CHART
-      // Create the trace
+  // BAR CHART
+    // Create the trace
       var bar_data = [{
-          // Use otu_ids for the x values
+        // Use otu_ids for x values
           x: sample_values.slice(0, 10).reverse(),
-          // Use sample_values for the y values
+        // Use sample_values for y values
           y: otu_ids.slice(0, 10).map(otu_id => `OTU ${otu_id}`).reverse(),
-          // Use otu_labels for the text values
+        // Use otu_labels for text values
           text: otu_labels.slice(0, 10).reverse(),
           type: 'bar',
           orientation: 'h',
           marker: {
-              color: 'steelblue'
+              color: 'teal'
           },
       }]
-
-
-
-
-      // Define plot layout
+  // Define plot layout
       var bar_layout = {
           title: "Top 10 Microbial Species in Belly Buttons",
           xaxis: { title: "Bacteria Sample Values" },
           yaxis: { title: "OTU IDs" }
       };
-
-      // Display plot
+  // Display plot
       Plotly.newPlot('bar', bar_data, bar_layout)
 
-      // BUBBLE CHART
-      // Create the trace
+// BUBBLE CHART
+  // Create the trace
       var bubble_data = [{
-          // Use otu_ids for the x values
+        // Use otu_ids for x values
           x: otu_ids,
-          // Use sample_values for the y values
+        // Use sample_values for y values
           y: sample_values,
-          // Use otu_labels for the text values
+        // Use otu_labels for the text values
           text: otu_labels,
           mode: 'markers',
           marker: {
-              // Use otu_ids for the marker colors
+        // Use otu_ids for the marker colors
               color: otu_ids,
-              // Use sample_values for the marker size
+        // Use sample_values for the marker size
               size: sample_values,
               colorscale: 'viridis'
           }
       }];
-
-
-      // Define plot layout
+  // Define plot layout
       var layout = {
           title: "Belly Button Samples",
           xaxis: { title: "OTU IDs" },
           yaxis: { title: "Sample Values" }
       };
-
-      // Display plot
+  // Display plot
       Plotly.newPlot('bubble', bubble_data, layout)
 
-      // GAUGE CHART
-      // Create variable for washing frequency
+// GAUGE CHART
+  // Create variable for washing frequency data
       var washFrequency = filteredMetadata.wfreq
-
-      // Create the trace
+  // Create the trace
       var gauge_data = [
-          {
-              domain: { x: [0, 1], y: [0, 1] },
+          {   domain: { x: [0, 1], y: [0, 1] },
               value: washFrequency,
               title: { text: "Belly Button Washing Frequency <br> scrubs per Week" },
               type: "indicator",
@@ -138,29 +125,18 @@ function buildCharts(patientID) {
                   bar: {color: 'steelblue'},
                   axis: { range: [null, 9] },
                   steps: [
-                      { range: [0, 2], color: 'red'},
-                      { range: [2, 4], color: 'goldenrod' },
+                      { range: [0, 2], color: 'salmon'},
+                      { range: [2, 4], color: 'darkorange' },
                       { range: [4, 6], color: 'yellow' },
-                      { range: [6, 8], color: 'yellowgreen' },
-                      { range: [8, 10], color: 'green' }
-                  ],
-              }
-          }
-      ];
-
-      // Define Plot layout
-      var gauge_layout = { width: 500, height: 400, margin: { t: 50, b: 0 } };
-
-      // Display plot
+                      { range: [6, 8], color: 'mediumaquamarine' },
+                      { range: [8, 10], color: 'green' }],
+          }}];
+  // Define Plot layout
+      var gauge_layout = { width: 500, height: 400};
+  // Display plot
       Plotly.newPlot('gauge', gauge_data, gauge_layout);
   }))
-
-
 };
-
-
-
-
 
 // Demographics Panel 
   function buildMetadata(sample) {
