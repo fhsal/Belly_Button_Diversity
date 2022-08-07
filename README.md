@@ -35,4 +35,8 @@ The effort involved using the d3 library to first load json data in java through
 
 * Bar and Gauge chart colors and word-wrap
 
+# Publishing on gitHub pages
+
+https://fhsal.github.io/Belly_Button_Diversity/
+
 
