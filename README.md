@@ -17,13 +17,17 @@ The effort involved using the d3 library to first load json data in java through
 
 ![img](https://github.com/fhsal/Belly_Button_Diversity/blob/main/images/local_server.png)
 
-# Bilding the selection and demographica panel 
+# Building the selection and demographica panel 
 
 ![img](https://github.com/fhsal/Belly_Button_Diversity/blob/main/images/demographic1.png)
 
 ![img](https://github.com/fhsal/Belly_Button_Diversity/blob/main/images/demographic2.png)
 
-# Bilding the dashboard
+# Building the dashboard
 
 ![img](https://github.com/fhsal/Belly_Button_Diversity/blob/main/images/dashboard.png)
+
+# Customizing style elements (such as the jumbotron)
+
+![img](https://github.com/fhsal/Belly_Button_Diversity/blob/main/images/jumbotron.png)
 
