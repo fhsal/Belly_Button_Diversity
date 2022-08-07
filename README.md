@@ -27,7 +27,12 @@ The effort involved using the d3 library to first load json data in java through
 
 ![img](https://github.com/fhsal/Belly_Button_Diversity/blob/main/images/dashboard.png)
 
-# Customizing style elements (such as the jumbotron)
+# Customizing style elements 
+
+* jumbotron
 
 ![img](https://github.com/fhsal/Belly_Button_Diversity/blob/main/images/jumbotron.png)
+
+* Bar and Gauge chart colors and word-wrap
+
 
